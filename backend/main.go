@@ -25,7 +25,7 @@ func main() {
 		ReadBufferSize: 8192,
 	})
 
-	setupMiddleware(app)
+	setupMiddleware(app, cfg)
 
 	provider, err := providers.NewProvider(cfg)
 	if err != nil {
@@ -37,6 +37,7 @@ func main() {
 
 	routes.RegisterRoutes(app, provider)
 
+	// Log registered routes
 	for _, route := range app.GetRoutes() {
 		if route.Method == "OPTIONS" || route.Method == "HEAD" || route.Method == "TRACE" || route.Method == "CONNECT" {
 			continue
@@ -47,26 +48,21 @@ func main() {
 		log.Infof("%s %s", route.Method, route.Path)
 	}
 
-
-
 	address := fmt.Sprintf("%s:%s", cfg.Server.Host, cfg.Server.Port)
-	log.Infow("Starting server",
-		"name", cfg.Server.Name,
-		"address", address,
-	)
+	log.Infow("Starting server", "address", address)
 
 	if err := app.Listen(address); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}
 }
 
-func setupMiddleware(app *fiber.App) {
+func setupMiddleware(app *fiber.App, cfg *config.Config) {
 	app.Use(recover.New())
 	app.Use(logger.New(logger.Config{
 		Format: "[${time}] ${status} - ${latency} ${method} ${path}\n",
 	}))
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: "*",
+		AllowOrigins: cfg.Server.FrontendURL,
 		AllowHeaders: "Origin, Content-Type, Accept, Authorization",
 		AllowMethods: "GET, POST, PUT, DELETE, OPTIONS",
 	}))
