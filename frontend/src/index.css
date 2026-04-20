@@ -1,0 +1,29 @@
+:root {
+  --bg: #0c0e13;
+  --surface: #14171f;
+  --border: #23283a;
+  --text: #dfe1e8;
+  --text-dim: #6c7186;
+  --accent: #4f7df9;
+  --accent-hover: #3d6ae6;
+  --green: #34d399;
+  --red: #f87171;
+  --radius: 8px;
+  --mono: "DM Mono", monospace;
+  --sans: "DM Sans", -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+input, select, button, textarea { font-family: inherit; font-size: inherit; }
+input:focus, select:focus { outline: none; border-color: var(--accent); }
+button { cursor: pointer; border: none; background: none; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }

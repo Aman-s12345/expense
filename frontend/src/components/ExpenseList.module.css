@@ -1,0 +1,122 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.title { font-size: 16px; font-weight: 600; }
+
+.total {
+  background: var(--bg);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green);
+  font-family: var(--mono);
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.select {
+  flex: 1;
+  padding: 10px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.sortBtn {
+  padding: 10px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: border-color 0.15s;
+}
+
+.sortBtn:hover { border-color: var(--text-dim); }
+
+.empty {
+  color: var(--text-dim);
+  font-size: 14px;
+  text-align: center;
+  padding: 32px 0;
+}
+
+.errorWrap { text-align: center; padding: 16px 0; }
+.error { color: var(--red); font-size: 13px; margin-bottom: 8px; }
+
+.retryBtn {
+  padding: 8px 20px;
+  background: var(--accent);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.table { width: 100%; }
+
+.thead {
+  display: flex;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.row {
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  align-items: center;
+}
+
+.cDate { width: 110px; flex-shrink: 0; color: var(--text-dim); font-size: 13px; }
+.cDesc { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cCat { width: 120px; flex-shrink: 0; }
+.cAmt {
+  width: 110px;
+  flex-shrink: 0;
+  text-align: right;
+  font-weight: 600;
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.pill {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+@media (max-width: 600px) {
+  .cCat, .thead .cCat { display: none; }
+  .cDate { width: 90px; }
+  .cAmt { width: 90px; }
+}
