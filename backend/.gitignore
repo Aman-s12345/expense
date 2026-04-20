@@ -1,6 +1,5 @@
 .env
 server
-migrate
 tmp/
 *.exe
 *.test
