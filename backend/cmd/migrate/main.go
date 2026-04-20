@@ -27,7 +27,7 @@ func main() {
 	}
 	defer db.Close()
 
-	migrationFile := "db/migrations/001_init.sql"
+	migrationFile := "db/migrations/migration_init_001.sql"
 	if len(os.Args) > 1 {
 		migrationFile = os.Args[1]
 	}
